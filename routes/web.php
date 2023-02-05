@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ContactUs;
 use App\Http\Controllers\WebSiteController;
 
 
@@ -26,6 +27,7 @@ Route::get("scholarship",[WebSiteController::class,"scholarship"])->name("schola
 Route::get("complete_purchase",[WebSiteController::class,"completePurchase"])->name("completePurchase");
 Route::post("check_payments",[WebSiteController::class,"checkPayment"])->name("checkPayment");
 Route::get('payment_complete', [WebSiteController::class, 'paymentSuccess'])->name('paymentSuccess');
+Route::post('contactUsSubmit', [ContactUs::class, 'contactUsSubmit'])->name('contactUsSubmit');
 Route::get('terms-and-conditions', function(){
     return view('WebSitePages.termsAndConditions');
 })->name('TnC');
