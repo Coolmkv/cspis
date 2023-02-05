@@ -5,26 +5,25 @@
 </div>
       <!-- content -->
       <section id="content">
-        <div class="wrapper bg-white">
-          <div class="pad1 pad_top1 ">
-            <article class="cols marg_right1">
-              <figure>
-                <a href="#"><img src="assets/images/sss-280x250w.jpg" alt=""></a></figure>
-                <span class="font1">Startup India</span>
-            </article>
-            <article class="cols marg_right1">
-              <figure><a href="#"><img src="assets/images/gff-280x250w.jpeg" alt=""></a></figure>
-              <span class="font1">Make In India</span>              
-            </article>
-            <article class="cols marg_right1">
-              <figure><a href="#"><img src="assets/images/ggff-280x250w.png" alt=""></a></figure> 
-              <span class="font1">Skill India</span>              
-            </article>
-            <article class="cols marg_right1">
-                <figure><a href="#"><img src="assets/images/gffg-280x250w.png" alt=""></a></figure>
-                <span class="font1">Go Green</span>               
-              </article>
-          </div>
+        <div class="container">
+          <div class="row mt-5">
+            <div class="col-md-3">
+              <a href="#"><img class="img-thumbnail homePageImg" src="assets/images/startupIndia.jpg" alt=""></a>
+              <span class="font1">Startup India</span>
+            </div>
+            <div class="col-md-3">
+              <img class="img-thumbnail homePageImg"  src="assets/images/gff-280x250w.jpeg" alt=""></a>
+            <span class="font1">Make In India</span> 
+            </div>
+            <div class="col-md-3">
+              <a href="#"><img class="img-thumbnail homePageImg"  src="assets/images/ggff-280x250w.png" alt=""></a>
+              <span class="font1">Skill India</span>   
+            </div>
+            <div class="col-md-3">
+              <a href="#"><img class="img-thumbnail homePageImg"  src="assets/images/gffg-280x250w.png" alt=""></a>
+              <span class="font1">Go Green</span>  
+            </div>
+          </div> 
         </div>
         <div class="box1">
           <div class="wrapper">

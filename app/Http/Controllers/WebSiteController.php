@@ -176,7 +176,6 @@ class WebSiteController extends Controller
         return $return;
     }
     public function paymentSuccess(){
-        session(["invoice_student_id"=>5]);
         if(session()->has("invoice_student_id")){
             $studentInfo = StudentRegistration::find(session("invoice_student_id"));
             $payments = Payment::where(Payment::STUDENT_ID,session("invoice_student_id"))->first([

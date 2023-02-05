@@ -502,3 +502,6 @@ footer a:hover {
     color: #4c4c4c;
     font: 14px Tahoma, Geneva, sans-serif;
 }
+.homePageImg{
+	height: 249px !important;
+}
