@@ -7,7 +7,6 @@
         {{-- <li><a href="courses.html">PGMS Yojna Exam</a></li> --}}
         {{-- <li><a href="programs.html">Get A Free Call back</a></li> --}}
         <li><a href="{{ route("scholarship") }}">Sahayta Scholarship Yojna</a></li>
-        <li><a href="{{ route("TnC") }}">Terms and Cond.</a></li>
         {{-- <li><a href="{{ url("/") }}">Login</a></li>
         <li class="end"><a href="{{ url("/") }}">Register</a></li> --}}
       </ul>
