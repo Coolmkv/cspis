@@ -24,7 +24,8 @@
           </div>
           <div class="wrapper">
             <article class="call"> <span class="call1">Call Us Now: </span><span class="call2">+91 957239964</span> </article>
-            <article class="col_4 pad_left2">Copyright &copy; <a href="#">{{ url("/") }}</a> All Rights Reserved<br>
+            <article class="">Copyright &copy; <a href="#">{{ url("/") }}</a> All Rights Reserved 
+              <a href="{{ route('PrivacyPolicy') }}">Privacy Policy</a> <a href="{{ route('TnC') }}">Terms and conditions</a>
               </article>
           </div>
         </div>

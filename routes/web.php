@@ -23,14 +23,19 @@ Route::get("about-us",[WebSiteController::class,"aboutUs"])->name("aboutUs");
 Route::get("contact-us",[WebSiteController::class,"contactUs"])->name("contactUs");
 Route::get("register-student",[WebSiteController::class,"registerStudent"])->name("registerStudent");
 Route::get("scholarship",[WebSiteController::class,"scholarship"])->name("scholarship");
-
+Route::get("complete_purchase",[WebSiteController::class,"completePurchase"])->name("completePurchase");
+Route::post("check_payments",[WebSiteController::class,"checkPayment"])->name("checkPayment");
+Route::get('payment_complete', [WebSiteController::class, 'paymentSuccess'])->name('paymentSuccess');
+Route::get('terms-and-conditions', function(){
+    return view('WebSitePages.termsAndConditions');
+})->name('TnC');
+Route::get('privacy-policy', function(){
+    return view('WebSitePages.privacyPolicy');
+})->name('PrivacyPolicy');
 
 Route::post('registerStudent', [WebSiteController::class, 'registerStudentInfo'])->name('registerStudentInfo');
 Route::get('razorpay', [WebSiteController::class, 'razorpay'])->name('razorpay');
-Route::post('razorpaypayment', [WebSiteController::class, 'payment'])->name('payment');
 Route::get('refresh-captcha',[WebSiteController::class,"refreshCapthca"])->name("refreshCaptcha");
-
-Route::get("complete_purchase",[WebSiteController::class,"completePurchase"])->name("completePurchase");
 
 Route::get('/dashboard', function () {
     return view('dashboard');

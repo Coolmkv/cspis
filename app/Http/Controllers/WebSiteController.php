@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Payment;
 use App\Models\StudentRegistration;
 use App\Traits\CommonFunctions;
 use Illuminate\Http\Request;
@@ -11,7 +12,7 @@ use Captcha;
 use Exception;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
-
+use Illuminate\Support\Str;
 class WebSiteController extends Controller
 {
     use CommonFunctions;
@@ -33,31 +34,27 @@ class WebSiteController extends Controller
         return view("WebSitePages.scholarShip");
     }
 
-    public function razorpay(){
-
-    }
-    public function payment(Request $request)
-    {        
-        $input = $request->all();        
-        $api = new Api(env('RAZOR_KEY'), env('RAZOR_SECRET'));
+    public function razorpay(Request $request){
+        $input = $request->all();
+        $api = new Api (env('RAZORPAY_KEY'), env('RAZORPAY_SECRET'));
         $payment = $api->payment->fetch($input['razorpay_payment_id']);
-
-        if(count($input)  && !empty($input['razorpay_payment_id'])) 
-        {
-            try 
-            {
-                $response = $api->payment->fetch($input['razorpay_payment_id'])->capture(array('amount'=>$payment['amount'])); 
-
-            } 
-            catch (\Exception $e) 
-            {
-                return  $e->getMessage();
+        if(count($input) && !empty($input['razorpay_payment_id'])) {
+            try {
+                $response = $api->payment->fetch($input['razorpay_payment_id'])->capture(array('amount' => $payment['amount']));
+                $payment = Payment::create([
+                    'r_payment_id' => $response['id'],
+                    'method' => $response['method'],
+                    'currency' => $response['currency'],
+                    'user_email' => $response['email'],
+                    'amount' => $response['amount']/100,
+                    'json_response' => json_encode((array)$response)
+                ]);
+            } catch(Exception $e) {
+                return $e->getMessage();
                 Session::put('error',$e->getMessage());
                 return redirect()->back();
-            }            
+            }
         }
-        
-        Session::put('success', 'Payment successful, your order will be despatched in the next 48 hours.');
         return redirect()->back();
     }
 
@@ -128,6 +125,71 @@ class WebSiteController extends Controller
         }catch(Exception $exception){
             Log::critical($exception->getMessage());
             $return = redirect()->back()->with("error","error in purchase.");
+        }
+        return $return;
+    }
+
+    public function getRandom(){
+        $random = "IN".session("student_id").Str::random(15);
+        return substr(strtoupper($random),0,15);
+    }
+
+    public function checkPayment(Request $request)
+    {        
+        $input = $request->all();        
+        $api = new Api(env('RAZOR_KEY'), env('RAZOR_SECRET'));
+        $payment = $api->payment->fetch($input['razorpay_payment_id']);
+
+        if(count($input)  && !empty($input['razorpay_payment_id'])) 
+        {
+            try 
+            {
+                $response = $api->payment->fetch($input['razorpay_payment_id'])->capture(array('amount'=>$payment['amount'])); 
+                if(session("registration_fee")==$response["amount"]){
+                    $invoice_number = $this->getRandom();
+                    Payment::insert([
+                        Payment::R_PAYMENT_ID=>$response['id'],
+                        Payment::METHOD=>$response["method"],
+                        Payment::CURRENCY=>$response["currency"],
+                        Payment::USER_EMAIL=>$response["email"],
+                        Payment::AMOUNT=>$response["amount"]/100,
+                        Payment::JSON_RESPONSE=>json_encode((array)$response),
+                        Payment::STUDENT_ID=>session("student_id"),
+                        Payment::INVOICE_NUMBER=>$invoice_number
+                    ]);
+                    session(["invoice_student_id"=>session("student_id")]);
+                    $return  = redirect(route("paymentSuccess"));
+                    //session()->forget("student_id");
+                    //session()->forget("registration_fee");
+                }else{
+                    $return = redirect()->back()->with("error","Invalid Amount");
+                }                
+            } 
+            catch (Exception $exception) 
+            {
+                Log::critical($exception->getMessage());
+                $return =  redirect("")->with("error",$exception->getMessage());
+            }            
+        }else{
+            $return =  redirect("")->with("error","Invalid payment response.");
+        }
+        return $return;
+    }
+    public function paymentSuccess(){
+        session(["invoice_student_id"=>5]);
+        if(session()->has("invoice_student_id")){
+            $studentInfo = StudentRegistration::find(session("invoice_student_id"));
+            $payments = Payment::where(Payment::STUDENT_ID,session("invoice_student_id"))->first([
+                Payment::AMOUNT,Payment::CURRENCY,Payment::INVOICE_NUMBER,Payment::METHOD
+            ]);
+            if(empty($studentInfo) || empty($payments)){
+                $return = redirect("")->with("error","Student details not found.");
+            }else{
+                $data = ["payment_info"=>$payments,"studentInfo"=>$studentInfo,"registration_date"=>date("F d, Y")];
+                $return = view("WebSitePages.paymentSuccess",$data);
+            }
+        }else{
+            $return = redirect("")->with("error","Invalid request.");
         }
         return $return;
     }

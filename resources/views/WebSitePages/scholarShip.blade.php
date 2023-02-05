@@ -37,8 +37,14 @@
                                 <option value="Budhhist">Budhhist</option>
                                 <option value="Other">Other</option>
                             </x-select-group-element>
-                            <x-input-group-element title="Category" placeholder="Category" name="category" required
-                                id="category"></x-input-group-element>
+                            <x-select-group-element title="Category" name="category" required id="category">
+                                <option value="">Select Category</option>
+                                <option value="General">General</option>
+                                <option value="SC">SC</option>
+                                <option value="ST">ST</option>
+                                <option value="OBC">OBC</option>
+                                <option value="Others">Others</option>
+                            </x-select-group-element>
                             <x-input-group-element title="Address" placeholder="Address" name="address" required
                                 id="address"></x-input-group-element>
                             <x-input-group-element title="District" placeholder="District" name="district" required
