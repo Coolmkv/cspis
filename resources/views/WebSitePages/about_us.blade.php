@@ -15,8 +15,7 @@
                                 <div class="wrapper pad_bot1">
                                     <figure class="left marg_right1"><img src="assets/images/page2_img1.jpg" alt="">
                                     </figure>
-                                    <p class="pad_bot1 pad_top2"><strong>CHANDAN SINGH PASWAN INTERNATIONAL SCHOOL PRIVATE
-                                            LIMITED</strong></p>
+                                    <p class="pad_bot1 pad_top2"><strong>CSP INTERNATIONAL SCHOOL</strong></p>
                                     <p>Welcome to CSP International School, where we are dedicated to providing a
                                         high-quality education for all of our students. Our school is a community of
                                         learners where students, staff, and parents work together to create a positive and
