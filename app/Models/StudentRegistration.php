@@ -42,6 +42,7 @@ class StudentRegistration extends Model
     const PHOTO_PATH = "/upload/photos/images/";
     const SIGNATURE_IMG = "/upload/photos/signature/";
 
+    const ID_ALIAS = "student_registration.id";
     use CommonFunctions;
     public function registerStudent(Request $request){
         try{

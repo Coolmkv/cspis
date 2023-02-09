@@ -24,4 +24,6 @@ class Payment extends Model
     const JSON_RESPONSE = "json_response";
     const CREATED_AT = "created_at";
     const UPDATED_AT = "updated_at";
+    
+    const ALIAS_CREATED_AT = "payments.created_at";
 }

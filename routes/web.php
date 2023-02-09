@@ -61,6 +61,8 @@ Route::middleware(['auth'])->group(function () {
     Route::post("addGalleryDataTable",[AdminController::class,"addGalleryDataTable"])->name("addGalleryDataTable");
 
     Route::get("web-site-elements",[AdminController::class,"webSiteElements"])->name("webSiteElements");
+    Route::get("registered-students",[AdminController::class,"registeredStudents"])->name("registeredStudents");
+    Route::post("registered-students-datatable",[AdminController::class,"registeredStudentsData"])->name("registeredStudentsDataTable");
 });
 
 require __DIR__.'/auth.php';

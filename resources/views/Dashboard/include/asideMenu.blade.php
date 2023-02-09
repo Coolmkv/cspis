@@ -96,6 +96,13 @@
                   <div data-i18n="Analytics">WebSite Elements</div>
                 </a>
               </li>
+
+              <li class="menu-item">
+                <a href="{{route("registeredStudents")}}" class="menu-link">
+                  <i class="menu-icon tf-icons bx bx-bookmark"></i>
+                  <div data-i18n="Analytics">Registered Students</div>
+                </a>
+              </li>
               
               <!-- Layouts -->
               {{-- <li class="menu-item active open">

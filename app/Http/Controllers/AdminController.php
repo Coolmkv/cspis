@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\GalleryItem;
 use App\Models\NavMenu;
+use App\Models\Payment;
+use App\Models\StudentRegistration;
 use App\Models\User;
 use App\Traits\CommonFunctions;
 use Exception;
@@ -291,4 +293,29 @@ class AdminController extends Controller
         return view("Dashboard.Pages.webSiteElements");
     }
     
+    public function registeredStudents(){
+        return view("Dashboard.Pages.registeredStudents");
+    }
+
+    public function registeredStudentsData(){
+        $data = StudentRegistration::select(
+            StudentRegistration::FIRST_NAME,
+        StudentRegistration::LAST_NAME,
+        StudentRegistration::GENDER,
+        StudentRegistration::AADHAR_NUMBER,
+        StudentRegistration::PHOTO,
+        StudentRegistration::SIGNATURE,
+        StudentRegistration::CLASS_PASSED,
+        Payment::INVOICE_NUMBER,
+        Payment::METHOD,
+         
+        )->selectRaw(Payment::AMOUNT.'/100 as amount, date_format('.Payment::ALIAS_CREATED_AT.', "%W %M %e %Y") as payment_date')
+        ->leftJoin(Payment::TABLE_NAME,function($on){
+            $on->on(Payment::STUDENT_ID,StudentRegistration::ID_ALIAS);
+        });
+
+            return Datatables::of($data)
+                    ->addIndexColumn()
+                    ->make(true);
+    }
 }
