@@ -308,8 +308,9 @@ class AdminController extends Controller
         StudentRegistration::CLASS_PASSED,
         Payment::INVOICE_NUMBER,
         Payment::METHOD,
+        Payment::AMOUNT
          
-        )->selectRaw(Payment::AMOUNT.'/100 as amount, date_format('.Payment::ALIAS_CREATED_AT.', "%W %M %e %Y") as payment_date')
+        )->selectRaw('date_format('.Payment::ALIAS_CREATED_AT.', "%W %M %e %Y") as payment_date')
         ->leftJoin(Payment::TABLE_NAME,function($on){
             $on->on(Payment::STUDENT_ID,StudentRegistration::ID_ALIAS);
         });
