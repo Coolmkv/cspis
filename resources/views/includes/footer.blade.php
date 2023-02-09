@@ -10,7 +10,7 @@
                             oppsite central hospital, Tilak Nagar,
                             Delhi, 110018
                         </p>
-                        <p><a href="tel:+91957239964">+91 957239964</a>
+                        <p><a href="tel:+919572139964">+91 9572139964</a>
                             <a href="mailto:info@cspis.org">info@cspis.org</a>
                         </p>
                     </article>
@@ -26,7 +26,7 @@
                 </div>
                 <div class="wrapper">
                     <article class="call"> <span class="call1">Call Us Now: </span><span class="call2">+91
-                            957239964</span> </article>
+                            9572139964</span> </article>
                     <article class="">Copyright &copy; <a href="#">{{ url('/') }}</a> All Rights
                         Reserved
 
