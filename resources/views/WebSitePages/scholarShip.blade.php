@@ -65,8 +65,6 @@
                                 accept="image/*"></x-input-group-element>
                             <x-select-group-element title="Class" name="class_passed" required id="class_passed">
                                 <option value="">Select Class</option>
-                                <option value="5th">5th</option>
-                                <option value="6th">6th</option>
                                 <option value="7th">7th</option>
                                 <option value="8th">8th</option>
                                 <option value="9th">9th</option>
@@ -112,6 +110,7 @@
     <script type="text/javascript">
      $(document).ready(function() {
             $("#registerStudent").on("submit", function(e) {
+                $("#submit").prop("disabled",true);
                 if(checkAadhar()){
                     var form = new FormData(this);
                     $.ajax({
@@ -125,16 +124,19 @@
                             if(response.status){
                                 window.location = '{{ route("completePurchase") }}';
                             }else{
+                                $("#submit").prop("disabled",false);
                                 errorMessage(response.message);
                             }
                         },
                         failure: function(response) {
+                            $("#submit").prop("disabled",false);
                             errorMessage(response.message);
                         }
                     });
                 }else{
                     e.preventDefault();
                     errorMessage("Invalid aadhar");
+                    $("#submit").prop("disabled",false);
                     return false;
                 }
                 
@@ -143,14 +145,15 @@
         
         function checkAadhar(){
             {
-                var regex =
-                    /^([0-9]{4}[0-9]{4}[0-9]{4}$)|([0-9]{4}\s[0-9]{4}\s[0-9]{4}$)|([0-9]{4}-[0-9]{4}-[0-9]{4}$)/;
-                if (regex.test($("#aadhar_number").val())) {
-                    
+                let aadharnumber = $("#aadhar_number").val();
+                let aadharnumberWithSpace = aadharnumber.slice(0, 4)+" "+aadharnumber.slice(4, 8)+" "+aadharnumber.slice(8, 12);
+                let regex = new RegExp(/^[2-9]{1}[0-9]{3}\s[0-9]{4}\s[0-9]{4}$/);
+                if (regex.test(aadharnumberWithSpace) == true) {
                     return true;
                 } else {
                     //for testing
                     return false;
+                    
                 }
             }
         }

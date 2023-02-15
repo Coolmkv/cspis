@@ -1,7 +1,7 @@
 @extends('layout.app_layout')
 @section("content")
 <div>
-    <img src="assets/images/csps_home_scholarship.jpg" class="w100" alt="Main content 2">
+    <img src="assets/images/new_flyer.jpg" class="w100" alt="Main content 2">
 </div>
       <!-- content -->
       <section id="content">
