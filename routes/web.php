@@ -38,7 +38,9 @@ Route::get('privacy-policy', function(){
 Route::get('cancellation-refund-policy', function(){
     return view('WebSitePages.cancellationAndRefund');
 })->name('cancelNRefund');
-
+Route::get('student-instructions', function(){
+    return view('WebSitePages.student_instructions');
+})->name('studentInstructions');
 Route::post('registerStudent', [WebSiteController::class, 'registerStudentInfo'])->name('registerStudentInfo');
 Route::get('razorpay', [WebSiteController::class, 'razorpay'])->name('razorpay');
 Route::get('refresh-captcha',[WebSiteController::class,"refreshCapthca"])->name("refreshCaptcha");
