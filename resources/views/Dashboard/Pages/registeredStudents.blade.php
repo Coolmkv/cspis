@@ -26,6 +26,19 @@
                                     <th>Class Passed</th>
                                     <th>Payment Method</th>
                                     <th>Payment Date</th>
+                                    <th>Photo</th>
+                                    <th>Signature</th>
+                                    <th>Class Passed</th>
+                                    <th>Address</th>
+                                    <th>Religion</th>
+                                    <th>Category</th>
+                                    <th>District</th>
+                                    <th>State</th>
+                                    <th>Pincode</th>
+                                    <th>Contact Number</th>
+                                    <th>Passing Board</th>
+                                    <th>Year of Passing</th>
+                                    <th>School</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -40,6 +53,7 @@
 
 @section('script')
     <script type="text/javascript">
+    let site_url = '{{ url('/') }}';
         $(function() {
 
             var table = $('.data-table').DataTable({
@@ -94,6 +108,76 @@
                     {
                         data: 'payment_date',
                         name: '{{ \App\Models\Payment::ALIAS_CREATED_AT }}'
+                    },
+                    {
+                        data: '{{ \App\Models\StudentRegistration::PHOTO }}',
+                        render: function(data, type) {
+                            let image = '';
+                            if (data) {
+                                image += '<img alt="Stored Image" src="' + site_url + data +
+                                    '" class="img-thumbnail">';
+                            }
+                            return image;
+                        },
+                        orderable: false,
+                        searchable: false
+                    },
+                    {
+                        data: '{{ \App\Models\StudentRegistration::SIGNATURE }}',
+                        render: function(data, type) {
+                            let image = '';
+                            if (data) {
+                                image += '<img alt="Stored Image" src="' + site_url + data +
+                                    '" class="img-thumbnail">';
+                            }
+                            return image;
+                        },
+                        orderable: false,
+                        searchable: false
+                    },
+                    {
+                        data: '{{ \App\Models\StudentRegistration::CLASS_PASSED }}',
+                        name: '{{ \App\Models\StudentRegistration::CLASS_PASSED }}'
+                    },
+                    {
+                        data: '{{ \App\Models\StudentRegistration::ADDRESS }}',
+                        name: '{{ \App\Models\StudentRegistration::ADDRESS }}'
+                    },
+                    {
+                        data: '{{ \App\Models\StudentRegistration::RELIGION }}',
+                        name: '{{ \App\Models\StudentRegistration::RELIGION }}'
+                    },
+                    {
+                        data: '{{ \App\Models\StudentRegistration::CATEGORY }}',
+                        name: '{{ \App\Models\StudentRegistration::CATEGORY }}'
+                    },
+                    {
+                        data: '{{ \App\Models\StudentRegistration::DISTRICT }}',
+                        name: '{{ \App\Models\StudentRegistration::DISTRICT }}'
+                    },
+                    {
+                        data: '{{ \App\Models\StudentRegistration::STATE }}',
+                        name: '{{ \App\Models\StudentRegistration::STATE }}'
+                    },
+                    {
+                        data: '{{ \App\Models\StudentRegistration::PINCODE }}',
+                        name: '{{ \App\Models\StudentRegistration::PINCODE }}'
+                    },
+                    {
+                        data: '{{ \App\Models\StudentRegistration::CONTACT_NUMBER }}',
+                        name: '{{ \App\Models\StudentRegistration::CONTACT_NUMBER }}'
+                    },
+                    {
+                        data: '{{ \App\Models\StudentRegistration::PASSING_BOARD }}',
+                        name: '{{ \App\Models\StudentRegistration::PASSING_BOARD }}'
+                    },
+                    {
+                        data: '{{ \App\Models\StudentRegistration::YEAR_OF_PASSING }}',
+                        name: '{{ \App\Models\StudentRegistration::YEAR_OF_PASSING }}'
+                    },
+                    {
+                        data: '{{ \App\Models\StudentRegistration::SCHOOL }}',
+                        name: '{{ \App\Models\StudentRegistration::SCHOOL }}'
                     },
                     
                 ]
