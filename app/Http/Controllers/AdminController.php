@@ -323,7 +323,7 @@ class AdminController extends Controller
         )->selectRaw('date_format('.Payment::ALIAS_CREATED_AT.', "%W %M %e %Y") as payment_date')
         ->leftJoin(Payment::TABLE_NAME,function($on){
             $on->on(Payment::STUDENT_ID,StudentRegistration::ID_ALIAS);
-        });
+        })->orderBy(StudentRegistration::ID_ALIAS,"desc");
 
             return Datatables::of($data)
                     ->addIndexColumn()
