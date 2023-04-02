@@ -88,9 +88,9 @@ class StudentRegistration extends Model
             if($student_id){
                 
                 if(in_array($request->input("class_passed"),["7th","8th","9th"])){
-                    $registration_fee = 24900;
+                    $registration_fee = 14900;
                 }else{
-                    $registration_fee = 39900;
+                    $registration_fee = 29900;
                 }
                 session(["student_id"=>$student_id,"registration_fee"=>$registration_fee]);
                 $return = $this->getJsonResponse("saved",$student_id,true,true);
