@@ -30,11 +30,11 @@
                                         Submit a completed application form online on {{ url('') }}<br>
                                         Online form fill up and document submission. <br>
                                         Fee Payment for registration.<br>
-                                        Class 7th to 9th : Rs.249<br>
-                                        Class 10thto 12th: Rs.399<br>
-                                        <b>Last Date of Registration 31stMar 2023<br>
-                                        Online Exam & Interview : 23rd April 2023 onwards<br>
-                                        Result Declaration & Scholarship distribution : 1st Jun 2023 onwards<br>
+                                        Class 7th to 9th : Rs.149<br>
+                                        Class 10thto 12th: Rs.299<br>
+                                        <b>Last Date of Registration 30th April 2023<br>
+                                        Online Exam & Interview : 23rd May 2023 onwards<br>
+                                        Result Declaration & Scholarship distribution : 1st July 2023 onwards<br>
                                         Selection Criteria:<br></b>
                                         Academic performance<br>
                                         Competition Test<br>
