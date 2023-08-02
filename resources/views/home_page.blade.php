@@ -1,9 +1,6 @@
 @extends('layout.app_layout')
 @section("content")
-<div>
-    <img src="assets/images/newPamphlet.jpg" class="w100" alt="Main content 2">
-</div>
-      <!-- content -->
+       <!-- content -->
       <section id="content">
         <div class="container">
           <div class="row mt-5">

@@ -23,7 +23,7 @@ Route::get('/', function () {
 Route::get("about-us",[WebSiteController::class,"aboutUs"])->name("aboutUs");
 Route::get("contact-us",[WebSiteController::class,"contactUs"])->name("contactUs");
 Route::get("register-student",[WebSiteController::class,"registerStudent"])->name("registerStudent");
-Route::get("scholarship",[WebSiteController::class,"scholarship"])->name("scholarship");
+// Route::get("scholarship",[WebSiteController::class,"scholarship"])->name("scholarship");
 Route::get("complete_purchase",[WebSiteController::class,"completePurchase"])->name("completePurchase");
 Route::post("check_payments",[WebSiteController::class,"checkPayment"])->name("checkPayment");
 Route::get('payment_complete', [WebSiteController::class, 'paymentSuccess'])->name('paymentSuccess');
@@ -38,9 +38,9 @@ Route::get('privacy-policy', function(){
 Route::get('cancellation-refund-policy', function(){
     return view('WebSitePages.cancellationAndRefund');
 })->name('cancelNRefund');
-Route::get('student-instructions', function(){
-    return view('WebSitePages.student_instructions');
-})->name('studentInstructions');
+// Route::get('student-instructions', function(){
+//     return view('WebSitePages.student_instructions');
+// })->name('studentInstructions');
 Route::post('registerStudent', [WebSiteController::class, 'registerStudentInfo'])->name('registerStudentInfo');
 Route::get('razorpay', [WebSiteController::class, 'razorpay'])->name('razorpay');
 Route::get('refresh-captcha',[WebSiteController::class,"refreshCapthca"])->name("refreshCaptcha");
